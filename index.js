@@ -7,18 +7,14 @@ let shellCommandSync = require('child_process').execSync;
 if (thereIsInternetConnection()) {
     lookForUpdates();
 } else {
+    print("Couldn't reach the internet");
     callAnotherNodeApp("./imu.js");
 }
 //#endregion Main Routine
 
 //#region Utils
 function thereIsInternetConnection() {
-    shellCommandSync('ping 8.8.8.8', function (error) {
-        if (error !== null)
-            return false;
-        else
-            return true;
-    });
+    return shellCommandSync('ping 8.8.8.8').includes('TTL');
 }
 
 function lookForUpdates() {
@@ -52,6 +48,7 @@ function updateApp() {
                 print(stdout);
             }
         }
+        callAnotherNodeApp("./imu.js");
     })
 }
 //#endregion Utils

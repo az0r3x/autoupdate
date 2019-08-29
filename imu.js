@@ -1,1 +1,1 @@
-console.log("new app loaded");
+console.log("NOW IT GOES");
