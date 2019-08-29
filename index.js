@@ -17,6 +17,7 @@ shellCommand("git status", function (error, stdout, stderr) {
             } else {
                 print("Already up-to-date");
                 callAnotherNodeApp("./imu.js");
+                //lets make some changes
             }
         }
     }
