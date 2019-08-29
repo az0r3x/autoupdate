@@ -14,7 +14,12 @@ if (thereIsInternetConnection()) {
 
 //#region Utils
 function thereIsInternetConnection() {
-    return shellCommandSync('ping 8.8.8.8').includes('TTL');
+    try {
+        shellCommandSync('ping 8.8.8.8');
+        return true;
+    } catch (error) {
+        return false;
+    }
 }
 
 function lookForUpdates() {
