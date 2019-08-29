@@ -8,7 +8,7 @@ if (thereIsInternetConnection()) {
     lookForUpdates();
 } else {
     print("Couldn't reach the internet");
-    callAnotherNodeApp("./imu.js");
+    callAnotherNodeApp("./myCode.js");
 }
 //#endregion Main Routine
 
