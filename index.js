@@ -15,7 +15,7 @@ if (thereIsInternetConnection()) {
 //#region Utils
 function thereIsInternetConnection() {
     try {
-        shellCommandSync('ping 8.8.8.8');
+        shellCommandSync('ping -n 1 8.8.8.8');
         return true;
     } catch (error) {
         return false;
