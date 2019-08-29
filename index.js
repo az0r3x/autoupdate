@@ -1,7 +1,9 @@
 let print = require('@az0r3x/print');
 let callAnotherNodeApp = require('child_process').fork;
 let shellCommand = require('child_process').exec;
+let shellCommandSync = require('child_process').execSync;
 
+shellCommandSync("git fetch");
 shellCommand("git status", function (error, stdout, stderr) {
     if (error) {
         print(error);
