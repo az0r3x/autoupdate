@@ -4,6 +4,7 @@ let shellCommand = require('child_process').exec;
 let shellCommandSync = require('child_process').execSync;
 
 shellCommandSync("git fetch");
+console.log("teste");
 shellCommand("git status", function (error, stdout, stderr) {
     if (error) {
         print(error);
