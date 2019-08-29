@@ -3,12 +3,14 @@ let callAnotherNodeApp = require('child_process').fork;
 let shellCommand = require('child_process').exec;
 let shellCommandSync = require('child_process').execSync;
 
+let myMainApp = 'myCode.js';
+
 //#region Main Routine
 if (thereIsInternetConnection()) {
     lookForUpdates();
 } else {
     print("Couldn't reach the internet");
-    callAnotherNodeApp("./myCode.js");
+    callAnotherNodeApp("./" + myMainApp);
 }
 //#endregion Main Routine
 
@@ -35,7 +37,7 @@ function lookForUpdates() {
                     updateApp();
                 } else {
                     print("Already up-to-date");
-                    callAnotherNodeApp("./imu.js");
+                    callAnotherNodeApp("./" + myMainApp);
                 }
             }
         }
@@ -53,7 +55,7 @@ function updateApp() {
                 print(stdout);
             }
         }
-        callAnotherNodeApp("./imu.js");
+        callAnotherNodeApp("./" + myMainApp);
     })
 }
 //#endregion Utils
