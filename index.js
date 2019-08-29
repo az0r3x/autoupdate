@@ -3,7 +3,13 @@ let shellCommand = require('child_process').exec;
 
 shellCommand("git status", function(error, stdout, stderr){
     if (!error && !stderr){
-        console.log(stdout);
+        if (stdout) {
+            if (stdout.includes("Your branch is up to date")){
+                console.log("Update available");
+            } else {
+                console.log("Already up-to-date")
+            }
+        }
     } else if(error){
         console.log(error);
     }
