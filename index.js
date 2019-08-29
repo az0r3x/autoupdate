@@ -4,7 +4,6 @@ let shellCommand = require('child_process').exec;
 let shellCommandSync = require('child_process').execSync;
 
 shellCommandSync("git fetch");
-console.log("teste");
 shellCommand("git status", function (error, stdout, stderr) {
     if (error) {
         print(error);
@@ -14,7 +13,7 @@ shellCommand("git status", function (error, stdout, stderr) {
     }
     if (!error && !stderr) {
         if (stdout) {
-            if (stdout.includes("Your branch is up to date")) {
+            if (stdout.includes("Your branch is behind")) {
                 print("Update available. Downloading...");
                 updateApp();
             } else {
@@ -27,7 +26,8 @@ shellCommand("git status", function (error, stdout, stderr) {
 });
 
 function updateApp() {
-    shellCommand("git pull -f origin master", function (error, stdout, stderr) {
+    shellCommandSync("git reset --hard HEAD")
+    shellCommand("git pull", function (error, stdout, stderr) {
         if (error) {
             print(error);
         }
