@@ -13,7 +13,7 @@ if (thereIsInternetConnection()) {
 
 //#region Utils
 function thereIsInternetConnection() {
-    child = exec('ping 8.8.8.8', function (error) {
+    shellCommandSync('ping 8.8.8.8', function (error) {
         if (error !== null)
             return false;
         else
